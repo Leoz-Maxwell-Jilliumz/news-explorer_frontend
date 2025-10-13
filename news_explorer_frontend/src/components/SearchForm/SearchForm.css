@@ -1,0 +1,115 @@
+.search {
+  background-image: url("../../assets/Background.jpg");
+  background-size: cover;
+  background-position: center -220px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin-top: -80px;
+
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  width: 608px;
+  height: 576px;
+  padding-bottom: 80px;
+}
+
+.search__title {
+  padding-top: 80px;
+  margin: 0;
+  width: 608px;
+  margin-top: 80px;
+  font-family: "Roboto Slab";
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 64px;
+  letter-spacing: 0;
+  text-align: start;
+  color: #ffffff;
+}
+
+.search__subtitle {
+  margin: 0;
+  margin-top: 32px;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-align: center;
+  text-wrap: nowrap;
+  color: #ffffff;
+}
+
+.search-form__bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-self: start;
+  gap: 40px;
+  width: 100%;
+  height: 64px;
+  background: #ffffff;
+  border-radius: 100px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+  padding: 0;
+  margin-top: 88px;
+}
+
+.search-form__input {
+  width: 376px;
+  height: 22px;
+  padding-left: 24px;
+  padding-top: 21px;
+  padding-bottom: 21px;
+  border: none;
+  border-radius: 100px;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #000000;
+}
+
+.search-form__button {
+  width: 168px;
+  height: 100%;
+  margin-right: 4px;
+  background: #2f71e5;
+  border-radius: 100px;
+  border: none;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #ffffff;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0px 5px 15px 0px #0e1a392d;
+
+  transition: ease-out 0.38s;
+}
+
+.search-form__button:hover {
+  background: #347eef;
+  color: #ffffff;
+  transition: ease-in 0.38s;
+  box-shadow: 0px 5px 15px 0px #0e1a392d;
+}
+
+.search-form__button:active {
+  background: #2f71e5;
+  color: #ffffff;
+  box-shadow: 0px 5px 15px 0px #0e1a392d;
+  transition: ease-in 0.1s;
+}

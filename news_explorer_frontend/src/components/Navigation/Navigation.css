@@ -1,0 +1,32 @@
+.navigation {
+  font-family: "Roboto";
+  font-weight: 500;
+}
+
+.nav__home {
+  width: 49px;
+  height: 24px;
+  font-family: "Roboto";
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #fff;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+
+.nav_saved .nav__home {
+  color: #1a1b22;
+}
+
+.nav__home::after {
+  content: "";
+  position: absolute;
+  top: calc(100% + 24px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 68px;
+  height: 3px;
+  background-color: #fff;
+}

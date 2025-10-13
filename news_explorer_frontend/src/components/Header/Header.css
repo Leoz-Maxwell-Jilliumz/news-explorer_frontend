@@ -1,0 +1,71 @@
+.header_main {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  background-color: transparent;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+  z-index: 1000;
+  padding: 0;
+  font-family: "Roboto Slab";
+}
+
+.header_saved {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  background-color: #ffffff;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 0;
+  font-family: "Roboto Slab";
+}
+
+.header__container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 104px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  color: #fff;
+}
+
+.header_saved .header__title {
+  color: #1a1b22;
+}
+
+.header__nav-auth {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 42px;
+}
+
+.header__sign-in-button {
+  width: 176px;
+  height: 48px;
+  background: transparent;
+  border-radius: 100px;
+  border: 1px solid #fff;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #fff;
+  cursor: pointer;
+}
+.header_saved .header__sign-in-button {
+  color: #1a1b22;
+  border: 1px solid #1a1b22;
+}
