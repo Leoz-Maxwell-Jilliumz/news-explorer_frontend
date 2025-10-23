@@ -24,3 +24,16 @@
   transition: 0.25s ease-in;
   cursor: pointer;
 }
+
+.modal__button-span {
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  letter-spacing: 0;
+}
+
+.modal__button-link {
+  color: #2f71e5;
+  text-decoration: none;
+}

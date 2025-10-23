@@ -1,8 +1,7 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a news explorer website created by Jamin Workman
 
-Currently, two official plugins are available:
+This site uses React, CSS, Javscript and uses the newsApi to get the articles that are searched for. It is made for desktop, tablet and mobile view. this website has demo users that you can use to test the functionality of the website with they can be found in the auth.js file.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This uses the users name to address them when appropriate and saves the articles to the saved page. this app is equipped with a preloader and other fallbacks when no articles are found

@@ -1,9 +1,10 @@
 import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import PropTypes from "prop-types";
 
-function RegisterModal({ isOpen, onClose }) {
+function RegisterModal({ isOpen, onClose, onModalSwitch }) {
   return (
-    <ModalWithForm isOpen={isOpen}>
+    <ModalWithForm isOpen={isOpen} onClose={onClose} title="Sign up">
       <label className="modal__label">
         Email
         <input type="email" className="modal__input" />
@@ -22,11 +23,26 @@ function RegisterModal({ isOpen, onClose }) {
         </button>
         <span className="modal__button-span">
           or&nbsp;
-          <a href="#">Sign in</a>
+          <a
+            href="/"
+            className="modal__button-link"
+            onClick={(e) => {
+              e.preventDefault();
+              onModalSwitch("loginModal");
+            }}
+          >
+            Sign in
+          </a>
         </span>
       </div>
     </ModalWithForm>
   );
 }
+
+RegisterModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onModalSwitch: PropTypes.func.isRequired,
+};
 
 export default RegisterModal;

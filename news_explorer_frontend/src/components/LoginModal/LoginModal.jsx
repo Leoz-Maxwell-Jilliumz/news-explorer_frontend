@@ -1,9 +1,10 @@
 import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import PropTypes from "prop-types";
 
-function LoginModal({ isOpen, onClose }) {
+function LoginModal({ isOpen, onClose, onModalSwitch }) {
   return (
-    <ModalWithForm isOpen={isOpen}>
+    <ModalWithForm isOpen={isOpen} onClose={onClose} title="Sign in">
       <label className="modal__label">
         Email
         <input
@@ -29,11 +30,26 @@ function LoginModal({ isOpen, onClose }) {
         </button>
         <span className="modal__button-span">
           or&nbsp;
-          <a href="#">Sign up</a>
+          <a
+            href="/"
+            className="modal__button-link"
+            onClick={(e) => {
+              e.preventDefault();
+              onModalSwitch("registerModal");
+            }}
+          >
+            Sign up
+          </a>
         </span>
       </div>
     </ModalWithForm>
   );
 }
+
+LoginModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onModalSwitch: PropTypes.func.isRequired,
+};
 
 export default LoginModal;

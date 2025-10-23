@@ -1,5 +1,6 @@
 import "./SearchForm.css";
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 function SearchForm({ onSearch }) {
   const [query, setQuery] = useState("");
@@ -14,7 +15,7 @@ function SearchForm({ onSearch }) {
   return (
     <div className="search">
       <div className="search-form">
-        <h2 className="search__title">What's going on in the world?</h2>
+        <h2 className="search__title">What&apos;s going on in the world?</h2>
         <p className="search__subtitle">
           Find the latest news on any topic and save them in your personal
           account.
@@ -36,5 +37,9 @@ function SearchForm({ onSearch }) {
     </div>
   );
 }
+
+SearchForm.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+};
 
 export default SearchForm;

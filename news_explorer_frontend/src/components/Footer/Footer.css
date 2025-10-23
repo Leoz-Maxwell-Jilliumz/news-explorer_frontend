@@ -22,7 +22,7 @@
   font-size: 18px;
   line-height: 24px;
   letter-spacing: 0;
-  color: #000000;
+  color: #b6bcbf;
 }
 .footer__links {
   display: flex;
@@ -76,4 +76,84 @@
 .footer__icon-linkedin {
   width: 24px;
   height: 24px;
+}
+
+@media screen and (max-width: 1209px) {
+  .footer__container {
+    height: 66px;
+  }
+
+  .footer__copyright {
+    margin-left: 40px;
+    padding-top: 24px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .footer__links-text {
+    font-size: 16px;
+    line-height: 22px;
+    gap: 40px;
+    padding-top: 20px;
+  }
+
+  .footer__links-icons {
+    margin-right: 40px;
+    padding-top: 24px;
+  }
+}
+
+@media screen and (max-width: 587px) {
+  .footer {
+    padding: 20px 16px 22px 16px;
+    width: 320px;
+    height: 176px;
+  }
+
+  .footer__container {
+    flex-direction: column; /* Change from row to column */
+    align-items: center; /* Center align all elements */
+    gap: 38px; /* Add gap between elements */
+  }
+
+  .footer__links {
+    order: 1; /* Make links appear first */
+    flex-direction: row;
+    justify-content: space-between; /* Stack text links and icons vertically */
+    align-items: center;
+  }
+
+  .footer__copyright {
+    order: 2; /* Make copyright appear last */
+    text-align: center; /* Center the copyright text */
+    margin: 0; /* Remove any default margins */
+  }
+
+  .footer__links-text {
+    width: 200px;
+    max-height: 74px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    gap: 0px;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .footer__link {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 48px;
+  }
+
+  .footer__links-icons {
+    padding: 0;
+    margin: 0;
+    gap: 16px; /* Space between GitHub and LinkedIn icons */
+    display: flex;
+    flex-direction: row;
+  }
 }

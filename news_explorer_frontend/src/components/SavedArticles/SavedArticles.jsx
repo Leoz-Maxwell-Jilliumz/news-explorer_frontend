@@ -1,71 +1,136 @@
 import "./SavedArticles.css";
 import NewsCard from "../NewsCard/NewsCard";
+import PropTypes from "prop-types";
 
-function SavedArticles() {
-  const demoArticles = [
-    {
-      id: 1,
-      title:
-        "Climate Change Summit Reaches Historic Agreement on Carbon Emissions",
-      description:
-        "World leaders from 195 countries have reached a groundbreaking agreement to reduce global carbon emissions by 50% within the next decade. The summit, held in Geneva, marks a turning point in international climate policy.",
-      url: "https://example.com/climate-summit",
-      imageUrl:
-        "https://images.unsplash.com/photo-1569163139394-de44cb5ce2a8?w=400&h=200&fit=crop",
-      source: "Global News Network",
-      publishedAt: "2025-10-10",
-    },
-    {
-      id: 2,
-      title: "Revolutionary AI Technology Breakthrough in Medical Diagnostics",
-      description:
-        "Scientists at MIT have developed an AI system that can detect early-stage cancer with 99.2% accuracy. This breakthrough could revolutionize medical diagnostics and save millions of lives worldwide.",
-      url: "https://example.com/ai-medical-breakthrough",
-      imageUrl:
-        "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=200&fit=crop",
-      source: "Tech Today",
-      publishedAt: "2025-10-09",
-    },
-    {
-      id: 3,
-      title:
-        "Space Exploration Milestone: First Human Mission to Mars Approved",
-      description:
-        "NASA announces the approval of the first crewed mission to Mars, scheduled for 2030. The ambitious project will see a team of six astronauts journey to the Red Planet for a two-year exploration mission.",
-      url: "https://example.com/mars-mission",
-      imageUrl:
-        "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=400&h=200&fit=crop",
-      source: "Space Chronicle",
-      publishedAt: "2025-10-08",
-    },
-  ];
+function SavedArticles({ savedArticles, onSaveArticle, isLoggedIn, userData }) {
+  const isArticleSaved = (articleUrl) => {
+    return savedArticles.some((saved) => saved.url === articleUrl);
+  };
+
+  // Extract keywords from all saved articles
+  const getAllKeywords = () => {
+    const allKeywords = [];
+
+    savedArticles.forEach((article) => {
+      if (article.title) {
+        const firstKeyword = article.title
+          .toLowerCase()
+          .replace(/[^\w\s]/g, "")
+          .split(/\s+/)
+          .filter((word) => word.length > 3)[0];
+
+        if (firstKeyword) {
+          const capitalizedKeyword =
+            firstKeyword.charAt(0).toUpperCase() + firstKeyword.slice(1);
+          allKeywords.push(capitalizedKeyword);
+        }
+      } else if (article.source) {
+        const capitalizedSource =
+          article.source.charAt(0).toUpperCase() +
+          article.source.slice(1).toLowerCase();
+        allKeywords.push(capitalizedSource);
+      }
+    });
+
+    // Remove duplicates
+    return [...new Set(allKeywords)];
+  };
+
+  // Format keywords display text
+  const getKeywordsText = () => {
+    const keywords = getAllKeywords();
+
+    if (keywords.length === 0) {
+      return null;
+    }
+
+    let keywordsString = "";
+
+    if (keywords.length === 1) {
+      keywordsString = keywords[0];
+    } else if (keywords.length === 2) {
+      keywordsString = `${keywords[0]} and ${keywords[1]}`;
+    } else if (keywords.length <= 4) {
+      const lastKeyword = keywords[keywords.length - 1];
+      const firstKeywords = keywords.slice(0, -1).join(", ");
+      keywordsString = `${firstKeywords}, and ${lastKeyword}`;
+    } else {
+      // More than 4 keywords
+      const visibleKeywords = keywords.slice(0, 2);
+      const remainingCount = keywords.length - 2;
+      keywordsString = `${visibleKeywords.join(
+        ", "
+      )}, and ${remainingCount} other${remainingCount > 1 ? "s" : ""}`;
+    }
+
+    return keywordsString;
+  };
+
+  const keywordsString = getKeywordsText();
 
   return (
-    <section className="saved-articles">
-      <div className="saved__title">
-        <h2 className="saved-articles__title">Saved Articles</h2>
-        <p className="saved-articles__subtitle">You have 3 saved articles</p>
-        <p className="saved-articles__keyword">
-          By Keyword:
-          <span className="saved-articles__keyword-highlight">Technology</span>
+    <main className="saved-articles">
+      <section className="saved-articles__header">
+        <h1 className="saved-articles__title">Saved Articles</h1>
+        <p className="saved-articles__subtitle">
+          {savedArticles.length > 0
+            ? `${userData.username}, you have ${
+                savedArticles.length
+              } saved article${savedArticles.length === 1 ? "" : "s"}`
+            : `${userData?.username || "User"}, you have no saved articles yet`}
         </p>
-      </div>
-      <div className="saved-articles__list-container">
-        <ul className="saved-articles__list">
-          {demoArticles.map((article) => (
-            <NewsCard
-              key={article.id}
-              title={article.title}
-              description={article.description}
-              url={article.url}
-              imageUrl={article.imageUrl}
-              source={article.source}
-              publishedAt={article.publishedAt}
-            />
-          ))}
-        </ul>
-      </div>
-    </section>
+
+        {/* Display keywords summary */}
+        {keywordsString && (
+          <p className="saved-articles__keyword">
+            By keywords:{" "}
+            <span className="saved-articles__keyword-highlight">
+              {keywordsString}
+            </span>
+          </p>
+        )}
+      </section>
+
+      {savedArticles.length > 0 ? (
+        <section className="saved-articles__results">
+          <ul className="saved-articles__list">
+            {savedArticles.map((article) => (
+              <NewsCard
+                key={article.url}
+                title={article.title}
+                description={article.description}
+                url={article.url}
+                imageUrl={article.imageUrl}
+                source={article.source}
+                publishedAt={article.publishedAt}
+                isLoggedIn={isLoggedIn}
+                onSaveArticle={onSaveArticle}
+                isArticleSaved={isArticleSaved}
+                showKeywords={true}
+                pageContext="saved"
+              />
+            ))}
+          </ul>
+        </section>
+      ) : (
+        <section className="saved-articles__empty">
+          <p className="saved-articles__empty-text">
+            No saved articles yet. Go to the home page and save some articles!
+          </p>
+        </section>
+      )}
+    </main>
   );
 }
+
 export default SavedArticles;
+
+SavedArticles.propTypes = {
+  savedArticles: PropTypes.array.isRequired,
+  onSaveArticle: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  userData: PropTypes.shape({
+    username: PropTypes.string,
+    email: PropTypes.string,
+  }),
+};

@@ -6,6 +6,10 @@
   border-radius: 16px;
 }
 
+.news-card__image-container {
+  position: relative;
+}
+
 .news-card__image {
   position: relative;
   width: 100%;
@@ -22,31 +26,54 @@
   object-fit: cover;
   background-color: #f0f0f0;
 }
+.keyword__container {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 10;
+  background-color: #ffffff;
+  padding: 8px 22px;
+  border-radius: 10px;
+}
 
-.news-card__button {
+.keyword-tag {
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #000000;
+  margin: 0;
+}
+
+.bookmark__container {
   position: absolute;
   top: 24px;
   right: 24px;
+  z-index: 10;
+}
+
+.bookmark-icon {
+  position: relative;
   width: 40px;
   height: 40px;
   background-color: #ffffff;
-
   padding: 8px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-
   font-size: 12px;
-  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
-.news-card__button:hover {
-  background-color: #ffffff;
+.bookmark-icon:hover {
+  background-color: #f0f0f0;
 }
 
-.news-card__button:hover .bookmark__image {
-  filter: brightness(0.5);
-  transition: filter 0.3s ease;
+.bookmark-icon:hover .bookmark__image {
+  filter: brightness(0.8);
 }
 
 .bookmark__image {
@@ -55,9 +82,87 @@
   transition: filter 0.3s ease;
 }
 
+/* Disabled state when not logged in */
+.bookmark-icon:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+  background-color: #f5f5f5;
+}
+
+.bookmark-icon:disabled .bookmark__image {
+  opacity: 1;
+  filter: grayscale(100%);
+}
+
+/* Hover effects only work when not disabled */
+.bookmark-icon:not(:disabled):hover {
+  background-color: #f0f0f0;
+}
+
+.bookmark-icon:not(:disabled):hover .bookmark__image {
+  filter: brightness(0.8);
+}
+
+/* Saved state styling - using the class name from JSX */
+.bookmark-icon.bookmark__image-saved {
+  /* You can add any special styling for saved state here if needed */
+}
+
+/* Tooltip appears only on hover when not logged in and disabled */
+.bookmark-icon.not-logged-in:disabled:hover::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 8px);
+  transform: translateY(-50%);
+  background-color: #ffffff;
+  color: #000000;
+  padding: 11px 20px;
+  border-radius: 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+  opacity: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Roboto";
+  font-weight: 500;
+  text-align: center;
+  line-height: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tooltip arrow */
+.bookmark-icon.not-logged-in:disabled:hover::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 3px);
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left-color: #ffffff;
+  z-index: 1001;
+}
+
+/* Hide tooltip by default */
+.bookmark-icon::before,
+.bookmark-icon::after {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Show tooltip on hover only when not logged in and disabled */
+.bookmark-icon.not-logged-in:disabled:hover::before,
+.bookmark-icon.not-logged-in:disabled:hover::after {
+  opacity: 1;
+}
+
 .news-card__content {
   position: relative;
-  margin: 20px 24px 24px 24px;
+  margin: 20px 24px 0 24px;
   display: flex;
   flex-direction: column;
 }
@@ -74,12 +179,14 @@
 
 .news-card__title {
   font-family: "Roboto Slab";
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 22px;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
   margin: 12px 0 16px 0;
   letter-spacing: 0;
   color: #1a1b22;
+  height: 60px;
+  overflow: hidden;
 }
 
 .news-card__text {
@@ -90,15 +197,137 @@
   margin: 0 0 18px 0;
   letter-spacing: 0;
   color: #1a1b22;
+  height: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.news-card__source {
-  font-family: "Roboto";
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-  margin: 0;
 
+.news-card__source {
+  font-family: "Roboto Slab";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0;
   letter-spacing: 0;
   color: #b6bcbf;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 1209px) {
+  .news-card {
+    width: 224px;
+    height: 420px;
+  }
+
+  .bookmark__container {
+    position: absolute;
+
+    top: 8px;
+    right: 8px;
+  }
+
+  .keyword__container {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+  }
+  .news-card__image {
+    height: 150px;
+    width: 100%;
+  }
+
+  .news-card__content {
+    height: 270px;
+    margin: 0;
+  }
+
+  .news-card__date {
+    font-size: 14px;
+    line-height: 18px;
+    margin: 16px 0 0 15px;
+  }
+
+  .news-card__title {
+    width: 192px;
+    height: 72px;
+    margin: 12px 16px 0 16px;
+    font-size: 22px;
+    line-height: 24px;
+    font-weight: 400;
+    letter-spacing: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .news-card__text {
+    width: 192px;
+    max-height: 88px;
+    margin: 10px 15px 0 15px;
+    font-size: 14px;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .news-card__source {
+    font-size: 14px;
+    line-height: 18px;
+    margin: 12px 0 16px 16px;
+  }
+}
+
+@media screen and (max-width: 587px) {
+  .news-card {
+    width: 288px;
+    min-height: 440px;
+    max-height: 444px;
+  }
+  .news-card__image {
+    height: 196px;
+    width: 100%;
+  }
+  .news-card__content {
+    height: 244px;
+    margin: 0;
+    padding-bottom: 16px;
+  }
+  .news-card__date {
+    width: 256px;
+    height: 24px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 16px 0 0 16px;
+  }
+
+  .news-card__title {
+    width: 256px;
+    max-height: 48px;
+    margin: 10px 16px 0 16px;
+    font-size: 22px;
+    line-height: 24px;
+    font-weight: 400;
+    letter-spacing: 0;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+  }
+  .news-card__text {
+    width: 256px;
+    max-height: 88px;
+    margin: 14px 16px 0 16px;
+    font-size: 16px;
+    line-height: 22px;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+  }
+  .news-card__source {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    margin: auto 0 0 16px;
+  }
 }
