@@ -24,7 +24,7 @@ function App() {
   // Initialize savedArticles from localStorage
   const [savedArticles, setSavedArticles] = useState(() => {
     const saved = localStorage.getItem("savedArticles");
-    console.log("Initializing savedArticles from localStorage:", saved);
+
     return saved ? JSON.parse(saved) : [];
   });
 
@@ -37,10 +37,6 @@ function App() {
 
   // Save to localStorage whenever savedArticles changes
   useEffect(() => {
-    console.log(
-      "savedArticles state updated, saving to localStorage:",
-      savedArticles
-    );
     localStorage.setItem("savedArticles", JSON.stringify(savedArticles));
   }, [savedArticles]);
 
@@ -89,25 +85,18 @@ function App() {
 
   // Function to save/unsave articles
   const handleSaveArticle = (article) => {
-    console.log("handleSaveArticle called with:", article);
-    console.log("Current savedArticles before save:", savedArticles);
-
     setSavedArticles((prevSaved) => {
       const isAlreadySaved = prevSaved.some(
         (saved) => saved.url === article.url
       );
-      console.log("Is already saved?", isAlreadySaved);
 
       let newSaved;
       if (isAlreadySaved) {
-        console.log("Removing article:", article.title);
         newSaved = prevSaved.filter((saved) => saved.url !== article.url);
       } else {
-        console.log("Adding article:", article.title);
         newSaved = [...prevSaved, article];
       }
 
-      console.log("New savedArticles:", newSaved);
       return newSaved;
     });
   };
@@ -115,19 +104,11 @@ function App() {
   // Function to check if article is saved
   const isArticleSaved = (articleUrl) => {
     const saved = savedArticles.some((saved) => saved.url === articleUrl);
-    console.log("Checking if saved:", {
-      articleUrl,
-      savedUrls: savedArticles.map((article) => article.url),
-      result: saved,
-      savedArticlesCount: savedArticles.length,
-    });
     return saved;
   };
 
   // Monitor savedArticles changes
-  useEffect(() => {
-    console.log("savedArticles updated:", savedArticles);
-  }, [savedArticles]);
+  useEffect(() => {}, [savedArticles]);
 
   // Function to close any open modal
   const handleCloseModal = () => {

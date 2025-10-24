@@ -32,23 +32,8 @@ function NewsCard({
 
   const isSaved = isArticleSaved ? isArticleSaved(url) : false;
 
-  console.log("NewsCard render:", {
-    title: title?.substring(0, 30),
-    url,
-    isSaved,
-    isLoggedIn,
-  });
-
   const handleBookmarkClick = () => {
-    console.log("Bookmark clicked!", {
-      isLoggedIn,
-      onSaveArticle: !!onSaveArticle,
-      isSaved,
-      url: articleData.url,
-    });
-
     if (isLoggedIn && onSaveArticle) {
-      console.log("About to save article with URL:", articleData.url);
       onSaveArticle(articleData);
 
       // Force component to re-render after a short delay to allow state to update
