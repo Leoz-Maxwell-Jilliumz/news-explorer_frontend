@@ -8,18 +8,20 @@ import { useState } from "react";
 import { fetchArticles } from "../../utils/newsApi";
 import PropTypes from "prop-types";
 
-function Main({ isArticleSaved, isLoggedIn, onSaveArticle }) {
+function Main({
+  isArticleSaved,
+  isLoggedIn,
+  onSaveArticle,
+  // Remove these unused props
+}) {
   const [hasSearched, setHasSearched] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [setError] = useState(null);
-  const [setQuery] = useState("");
+  // Remove error and query since you're not using them in the UI
   const [visibleCount, setVisibleCount] = useState(3);
 
   const handleSearch = async (searchQuery) => {
     setLoading(true);
-    setError(null);
-    setQuery(searchQuery);
     setHasSearched(true);
 
     try {
@@ -30,17 +32,16 @@ function Main({ isArticleSaved, isLoggedIn, onSaveArticle }) {
         setLoading(false);
       }, 1500);
     } catch (err) {
-      setError(err);
+      console.error("Search failed:", err);
+      setSearchResults([]);
       setLoading(false);
     }
   };
 
-  // Add this function for the "Show more" functionality
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 3);
   };
 
-  // Check if we should show the "Show more" button
   const shouldShowLoadMore = visibleCount < searchResults.length;
 
   return (
@@ -66,14 +67,13 @@ function Main({ isArticleSaved, isLoggedIn, onSaveArticle }) {
                 imageUrl={article.urlToImage}
                 source={article.source.name}
                 publishedAt={article.publishedAt}
-                isLoggedIn={isLoggedIn} // Use the actual prop instead of hardcoded true
+                isLoggedIn={isLoggedIn}
                 onSaveArticle={onSaveArticle}
                 isArticleSaved={isArticleSaved}
                 pageContext="main"
               />
             ))}
           </ul>
-          {/* Only show button if there are more articles to load */}
           {shouldShowLoadMore && (
             <button className="load-more-button" onClick={handleLoadMore}>
               Show More Articles
@@ -107,11 +107,6 @@ Main.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   onSaveArticle: PropTypes.func.isRequired,
   isArticleSaved: PropTypes.func.isRequired,
-  savedArticles: PropTypes.array.isRequired,
-  userData: PropTypes.shape({
-    username: PropTypes.string,
-    email: PropTypes.string,
-  }),
 };
 
 export default Main;

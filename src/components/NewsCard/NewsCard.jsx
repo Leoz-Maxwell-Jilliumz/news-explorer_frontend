@@ -7,16 +7,18 @@ import PropTypes from "prop-types";
 
 function NewsCard({
   title,
-  description,
+  description = "", // Default parameter instead of defaultProps
   url,
-  imageUrl,
+  imageUrl = "", // Default parameter instead of defaultProps
   source,
   publishedAt,
   isLoggedIn,
   onSaveArticle,
   isArticleSaved,
-  pageContext = "main",
-  showKeywords = true,
+  pageContext,
+  keyword: propKeyword = null, // Rename to avoid conflict
+  onRemoveArticle = null, // Default parameter instead of defaultProps
+  showKeywords = false, // Add default for showKeywords
 }) {
   // Force re-render trigger
   const [, forceUpdate] = useState({});
@@ -98,7 +100,8 @@ function NewsCard({
     return null;
   };
 
-  const keyword = extractKeywords();
+  // Use propKeyword if provided, otherwise extract from title/source
+  const displayKeyword = propKeyword || extractKeywords();
 
   return (
     <li className="news-card">
@@ -124,9 +127,9 @@ function NewsCard({
         </div>
 
         {/* Keyword tag container - positioned like bookmark */}
-        {showKeywords && keyword && pageContext === "saved" && (
+        {showKeywords && displayKeyword && pageContext === "saved" && (
           <div className="keyword__container">
-            <span className="keyword-tag">{keyword}</span>
+            <span className="keyword-tag">{displayKeyword}</span>
           </div>
         )}
       </div>
@@ -152,16 +155,9 @@ NewsCard.propTypes = {
   onSaveArticle: PropTypes.func.isRequired,
   isArticleSaved: PropTypes.func.isRequired,
   pageContext: PropTypes.oneOf(["main", "saved"]).isRequired,
-  keyword: PropTypes.string, // Optional - only for saved articles
-  onRemoveArticle: PropTypes.func, // Optional - only for saved articles
+  keyword: PropTypes.string,
+  onRemoveArticle: PropTypes.func,
   showKeywords: PropTypes.bool,
-};
-
-NewsCard.defaultProps = {
-  description: "",
-  imageUrl: "",
-  keyword: null,
-  onRemoveArticle: null,
 };
 
 export default NewsCard;
