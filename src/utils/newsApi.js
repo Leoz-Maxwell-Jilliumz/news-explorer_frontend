@@ -1,7 +1,10 @@
 import { ApiKey } from "./constants";
 
 const API_KEY = ApiKey;
-const BASE_URL = "https://newsapi.org/v2"; // Base URL for the News API
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://nomoreparties.co/news/v2/everything"
+    : "https://newsapi.org/v2/everything";
 
 // Function to fetch articles based on a search query
 export const fetchArticles = async (query) => {
