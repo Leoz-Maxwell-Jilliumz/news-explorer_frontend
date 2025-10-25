@@ -1,11 +1,11 @@
 //file imports
 import "./App.css";
 import Header from "../Header/Header.jsx";
-import Main from "../Main/Main";
-import Footer from "../Footer/Footer";
-import LoginModal from "../LoginModal/LoginModal";
-import RegisterModal from "../RegisterModal/RegisterModal";
-import SavedArticles from "../SavedArticles/SavedArticles";
+import Main from "../Main/Main.jsx";
+import Footer from "../Footer/Footer.jsx";
+import LoginModal from "../LoginModal/LoginModal.jsx";
+import RegisterModal from "../RegisterModal/RegisterModal.jsx";
+import SavedArticles from "../SavedArticles/SavedArticles.jsx";
 //library imports
 import { useState, useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";

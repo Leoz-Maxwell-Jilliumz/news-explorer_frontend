@@ -11,8 +11,9 @@
 .about__img {
   margin-top: 80px;
   margin-left: 104px;
-  height: 464px;
-  width: 464px;
+  max-width: 464px;
+  min-width: 464px;
+  max-height: 464px;
   border-radius: 1000px;
 }
 
