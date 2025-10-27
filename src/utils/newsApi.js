@@ -1,10 +1,9 @@
 import { ApiKey } from "./constants";
 
 const API_KEY = ApiKey;
-const BASE_URL =
-  import.meta.env.PROD === "production"
-    ? "https://nomoreparties.co/news/v2"
-    : "https://newsapi.org/v2";
+const BASE_URL = import.meta.env.PROD
+  ? "https://nomoreparties.co/news/v2"
+  : "https://newsapi.org/v2";
 
 // Function to fetch articles based on a search query
 export const fetchArticles = async (query) => {
