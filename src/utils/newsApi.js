@@ -9,14 +9,22 @@ const BASE_URL = import.meta.env.PROD
 export const fetchArticles = async (query) => {
   try {
     const response = await fetch(
-      `${BASE_URL}/everything?q=${query}&apiKey=${API_KEY}`
+      `${BASE_URL}/everything?q=${encodeURIComponent(
+        query
+      )}&apiKey=${API_KEY}&pageSize=20&sortBy=publishedAt`
     );
 
     if (!response.ok) {
+      console.error(`API Error: ${response.status} - ${response.statusText}`);
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const data = await response.json();
+
+    if (!data.articles) {
+      throw new Error("No articles found in response");
+    }
+
     return data.articles; // Return the articles from the response
   } catch (error) {
     console.error("Error fetching articles:", error);
@@ -28,14 +36,20 @@ export const fetchArticles = async (query) => {
 export const fetchTopHeadlines = async () => {
   try {
     const response = await fetch(
-      `${BASE_URL}/top-headlines?country=us&apiKey=${API_KEY}`
+      `${BASE_URL}/top-headlines?country=us&apiKey=${API_KEY}&pageSize=20`
     );
 
     if (!response.ok) {
+      console.error(`API Error: ${response.status} - ${response.statusText}`);
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const data = await response.json();
+
+    if (!data.articles) {
+      throw new Error("No articles found in response");
+    }
+
     return data.articles; // Return the articles from the response
   } catch (error) {
     console.error("Error fetching top headlines:", error);
