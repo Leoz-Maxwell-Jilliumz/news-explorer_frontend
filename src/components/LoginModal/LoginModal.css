@@ -16,7 +16,7 @@
 }
 
 .modal__input::placeholder {
-  font-family: "Inter";
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #0000002d;
@@ -49,7 +49,7 @@
 }
 
 .modal__button-span {
-  font-family: "Inter";
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #000000;

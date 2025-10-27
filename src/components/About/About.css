@@ -15,6 +15,7 @@
   min-width: 464px;
   max-height: 464px;
   border-radius: 1000px;
+  object-fit: cover;
 }
 
 .about__description {
@@ -24,7 +25,7 @@
 
 .about__title {
   margin: 0;
-  font-family: "Roboto Slab";
+  font-family: "Roboto Slab", "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: 40px;
   line-height: 46px;
@@ -35,7 +36,7 @@
 .about__text {
   margin: 0;
   margin-top: 24px;
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;

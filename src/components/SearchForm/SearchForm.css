@@ -1,7 +1,7 @@
 .search {
   background-image: url("../../assets/Background.jpg");
   background-size: cover;
-  background-position: center -220px;
+  background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   margin-top: -80px;
@@ -25,7 +25,7 @@
   margin: 0;
   width: 608px;
   margin-top: 80px;
-  font-family: "Roboto Slab";
+  font-family: "Roboto Slab", "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: 60px;
   line-height: 64px;
@@ -37,7 +37,7 @@
 .search__subtitle {
   margin: 0;
   margin-top: 32px;
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
@@ -71,7 +71,7 @@
   padding-bottom: 21px;
   border: none;
   border-radius: 100px;
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
@@ -80,7 +80,7 @@
 }
 
 .search-form__input::placeholder {
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
@@ -99,7 +99,7 @@
   background: #2f71e5;
   border-radius: 100px;
   border: none;
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
@@ -129,7 +129,8 @@
 
 @media screen and (max-width: 1209px) {
   .search {
-    background-position: center -150px;
+    background-size: cover;
+    background-position: center -90px;
   }
   .search-form {
     height: 400px;

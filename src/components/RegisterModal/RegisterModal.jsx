@@ -7,15 +7,30 @@ function RegisterModal({ isOpen, onClose, onModalSwitch }) {
     <ModalWithForm isOpen={isOpen} onClose={onClose} title="Sign up">
       <label className="modal__label">
         Email
-        <input type="email" className="modal__input" />
+        <input
+          type="email"
+          className="modal__input"
+          required
+          placeholder="Enter Email"
+        />
       </label>
       <label className="modal__label">
         Password
-        <input type="password" className="modal__input" />
+        <input
+          type="password"
+          className="modal__input"
+          required
+          placeholder="Enter Password"
+        />
       </label>
       <label className="modal__label">
         Username
-        <input type="text" className="modal__input" />
+        <input
+          type="text"
+          className="modal__input"
+          required
+          placeholder="Enter Username"
+        />
       </label>
       <div className="modal__button-container">
         <button className="modal__submit" type="submit">

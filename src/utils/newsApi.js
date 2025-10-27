@@ -2,7 +2,7 @@ import { ApiKey } from "./constants";
 
 const API_KEY = ApiKey;
 const BASE_URL =
-  process.env.NODE_ENV === "production"
+  import.meta.env.PROD === "production"
     ? "https://nomoreparties.co/news/v2"
     : "https://newsapi.org/v2";
 

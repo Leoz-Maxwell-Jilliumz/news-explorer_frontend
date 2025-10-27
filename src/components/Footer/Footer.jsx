@@ -12,12 +12,12 @@ function Footer() {
         <div className="footer__links">
           <ul className="footer__links-text">
             <li>
-              <a className="footer__link" href="#">
+              <a className="footer__link" href="/">
                 Home
               </a>
             </li>
             <li>
-              <a className="footer__link" href="#">
+              <a className="footer__link" href="https://tripleten.com/">
                 Triple Ten
               </a>
             </li>

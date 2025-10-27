@@ -1,5 +1,5 @@
 .nav {
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 500;
   width: 100%;
   height: 100%;
@@ -66,12 +66,17 @@
   height: 24px;
   font-size: 18px;
   line-height: 24px;
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 500;
   text-decoration: none;
   color: #b6bcbf;
   margin: 0 56px 0 76px;
   position: relative;
+}
+
+.nav__saved-articles:hover {
+  color: #fff;
+  transition: 0.3s ease-in;
 }
 
 .nav__sign-in-button {
@@ -81,7 +86,7 @@
   border: 1px solid #fff;
   border-radius: 100px;
   color: #fff;
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   padding: 12px;
   font-size: 18px;
   line-height: 24px;
@@ -95,10 +100,10 @@
   margin-top: 19px;
   margin-bottom: 13px;
   background: transparent;
-  border: 1px solid #fff;
+  border: 1px solid #d1d2d6;
   border-radius: 100px;
   color: #fff;
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,17 +111,29 @@
   gap: 15px;
 }
 
+.nav__logout-button:hover {
+  border: 1px solid #fff;
+  color: #fff;
+  transition: 0.3s ease-in;
+  cursor: pointer;
+}
+
 .nav__username {
   height: 24px;
   font-size: 18px;
   line-height: 24px;
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 500;
 }
 
 .nav_saved .nav__home {
+  color: #b6bcbf;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+.nav_saved .nav__home:hover {
   color: #1a1b22;
-  font-family: "Roboto";
+  transition: 0.3s ease-in;
 }
 
 .nav_saved .nav__home::after {
@@ -138,10 +155,16 @@
 }
 
 .nav_saved .nav__logout-button {
-  border: 1px solid #1a1b22;
+  border: 1px solid #d1d2d6;
   color: #1a1b22;
 }
 
+.nav_saved .nav__logout-button:hover {
+  border: 1px solid #1a1b22;
+
+  transition: 0.3s ease-in;
+  cursor: pointer;
+}
 @media screen and (max-width: 1209px) {
   .nav__page-links {
     margin-left: 0;
@@ -306,7 +329,7 @@
     max-width: 300px;
     height: 56px;
     padding: 0;
-    font-family: "Roboto";
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
   }
 
   .nav__mobile-sign-in-button,
@@ -315,7 +338,7 @@
     border: 2px solid #fff; /* White border for both */
     border-radius: 100px;
     padding: 10px 20px;
-    font-family: "Roboto";
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
     font-weight: 500;
     font-size: 16px;
     cursor: pointer;
@@ -352,48 +375,4 @@
     filter: brightness(0) saturate(100%) invert(7%) sepia(8%) saturate(1077%)
       hue-rotate(169deg) brightness(95%) contrast(85%);
   }
-
-  /* Remove all the saved articles specific styling - make them the same */
-  /* Comment out or remove these saved articles overrides:
-  .nav_saved .nav__mobile-dropdown::before {
-    background-color: #f5f6f7;
-  }
-
-  .nav_saved .nav__mobile-container {
-    background-color: #f5f6f7;
-  }
-
-  .nav_saved .nav__mobile-home,
-  .nav_saved .nav__mobile-saved-articles {
-    color: #1a1b22;
-    border-bottom: 1px solid #e6e8eb;
-  }
-
-  .nav_saved .nav__mobile-home:hover,
-  .nav_saved .nav__mobile-saved-articles:hover {
-    color: #1a1b22;
-    opacity: 0.7;
-  }
-
-  .nav_saved .nav__mobile-sign-in-button,
-  .nav_saved .nav__mobile-logout-button {
-    border-color: #1a1b22;
-    color: #1a1b22;
-  }
-
-  .nav_saved .nav__mobile-sign-in-button:hover,
-  .nav_saved .nav__mobile-logout-button:hover {
-    background-color: #1a1b22;
-    color: #fff;
-  }
-
-  .nav_saved .nav__mobile-logout-img {
-    filter: brightness(0) saturate(100%) invert(7%) sepia(8%) saturate(1077%)
-      hue-rotate(169deg) brightness(95%) contrast(85%);
-  }
-
-  .nav_saved .nav__mobile-logout-button:hover .nav__mobile-logout-img {
-    filter: brightness(0) invert(1);
-  }
-  */
 }

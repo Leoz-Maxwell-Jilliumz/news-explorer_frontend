@@ -17,7 +17,7 @@ function NewsCard({
   isArticleSaved,
   pageContext,
   keyword: propKeyword = null, // Rename to avoid conflict
-  onRemoveArticle = null, // Default parameter instead of defaultProps
+
   showKeywords = false, // Add default for showKeywords
 }) {
   // Force re-render trigger
@@ -135,10 +135,17 @@ function NewsCard({
       </div>
 
       <div className="news-card__content">
-        <p className="news-card__date">{formatDate(publishedAt)}</p>
-        <h3 className="news-card__title">{title}</h3>
-        <p className="news-card__text">{description}</p>
-        <p className="news-card__source">{source}</p>
+        <a
+          href={url}
+          rel="noopener noreferrer"
+          target="_blank"
+          className="news-card__link"
+        >
+          <p className="news-card__date">{formatDate(publishedAt)}</p>
+          <h3 className="news-card__title">{title}</h3>
+          <p className="news-card__text">{description}</p>
+          <p className="news-card__source">{source}</p>
+        </a>
       </div>
     </li>
   );

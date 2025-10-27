@@ -6,6 +6,10 @@
   border-radius: 16px;
 }
 
+.news-card__link {
+  text-decoration: none;
+}
+
 .news-card__image-container {
   position: relative;
 }
@@ -37,7 +41,7 @@
 }
 
 .keyword-tag {
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
@@ -52,6 +56,7 @@
   z-index: 10;
 }
 
+/* Clean bookmark icon styling - NO hover background change */
 .bookmark-icon {
   position: relative;
   width: 40px;
@@ -65,47 +70,41 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s ease, opacity 0.3s ease;
+  /* Remove ALL transition properties that affect background */
 }
 
-.bookmark-icon:hover {
-  background-color: #f0f0f0;
-}
-
-.bookmark-icon:hover .bookmark__image {
-  filter: brightness(0.8);
-}
-
+/* Image styling with filter transitions */
 .bookmark__image {
   width: 24px;
   height: 24px;
   transition: filter 0.3s ease;
+  /* No other properties that would affect the whole button */
+}
+
+/* ONLY filter the image on hover - not the container */
+.bookmark-icon:not(:disabled):hover .bookmark__image {
+  filter: brightness(0.7) saturate(1.2);
+}
+
+/* For the saved state (blue bookmark) */
+.bookmark-icon.saved:hover .bookmark__image {
+  filter: brightness(0.8) saturate(1.3);
+}
+
+/* For the delete icon on saved page */
+.bookmark-icon.remove-mode:hover .bookmark__image {
+  filter: brightness(0.7) hue-rotate(10deg);
 }
 
 /* Disabled state when not logged in */
 .bookmark-icon:disabled {
   cursor: not-allowed;
-  opacity: 1;
-  background-color: #f5f5f5;
+  background-color: #ffffff; /* Keep white background */
 }
 
 .bookmark-icon:disabled .bookmark__image {
-  opacity: 1;
+  opacity: 0.5;
   filter: grayscale(100%);
-}
-
-/* Hover effects only work when not disabled */
-.bookmark-icon:not(:disabled):hover {
-  background-color: #f0f0f0;
-}
-
-.bookmark-icon:not(:disabled):hover .bookmark__image {
-  filter: brightness(0.8);
-}
-
-/* Saved state styling - using the class name from JSX */
-.bookmark-icon.bookmark__image-saved {
-  /* You can add any special styling for saved state here if needed */
 }
 
 /* Tooltip appears only on hover when not logged in and disabled */
@@ -124,7 +123,7 @@
   z-index: 1000;
   opacity: 1;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 500;
   text-align: center;
   line-height: 18px;
@@ -168,7 +167,7 @@
 }
 
 .news-card__date {
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
@@ -178,7 +177,7 @@
 }
 
 .news-card__title {
-  font-family: "Roboto Slab";
+  font-family: "Roboto Slab", "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: 26px;
   line-height: 30px;
@@ -190,7 +189,7 @@
 }
 
 .news-card__text {
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
@@ -203,7 +202,7 @@
 }
 
 .news-card__source {
-  font-family: "Roboto Slab";
+  font-family: "Roboto Slab", "Times New Roman", Times, serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
@@ -221,7 +220,6 @@
 
   .bookmark__container {
     position: absolute;
-
     top: 8px;
     right: 8px;
   }
@@ -231,6 +229,7 @@
     top: 8px;
     left: 8px;
   }
+
   .news-card__image {
     height: 150px;
     width: 100%;
@@ -258,6 +257,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   .news-card__text {
     width: 192px;
     max-height: 88px;
@@ -267,6 +267,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   .news-card__source {
     font-size: 14px;
     line-height: 18px;
@@ -280,15 +281,18 @@
     min-height: 440px;
     max-height: 444px;
   }
+
   .news-card__image {
     height: 196px;
     width: 100%;
   }
+
   .news-card__content {
     height: 244px;
     margin: 0;
     padding-bottom: 16px;
   }
+
   .news-card__date {
     width: 256px;
     height: 24px;
@@ -312,6 +316,7 @@
     display: -webkit-box;
     text-overflow: ellipsis;
   }
+
   .news-card__text {
     width: 256px;
     max-height: 88px;
@@ -324,6 +329,7 @@
     display: -webkit-box;
     text-overflow: ellipsis;
   }
+
   .news-card__source {
     font-size: 16px;
     line-height: 20px;

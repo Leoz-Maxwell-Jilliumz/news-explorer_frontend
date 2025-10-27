@@ -16,7 +16,7 @@ function Header({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const headerClass =
-    location.pathname === "/saved-articles" ? "header_saved" : "header_main";
+    location.pathname === "/saved-articles" ? "header_saved" : "header";
 
   const getHeaderClasses = () => {
     let classes = headerClass;
