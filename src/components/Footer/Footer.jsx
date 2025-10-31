@@ -17,7 +17,12 @@ function Footer() {
               </a>
             </li>
             <li>
-              <a className="footer__link" href="https://tripleten.com/">
+              <a
+                className="footer__link"
+                href="https://tripleten.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Triple Ten
               </a>
             </li>
@@ -27,6 +32,8 @@ function Footer() {
               <a
                 className="footer__link"
                 href="https://github.com/Leoz-Maxwell-Jilliumz"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <img
                   className="footer__icon-git"
@@ -39,6 +46,8 @@ function Footer() {
               <a
                 className="footer__link"
                 href="https://www.linkedin.com/in/jamin-workman-8505312b1"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <img
                   className="footer__icon-linkedin"
