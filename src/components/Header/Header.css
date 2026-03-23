@@ -1,0 +1,111 @@
+.header {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  background-color: transparent;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+  z-index: 1000;
+  padding: 0;
+  font-family: "Roboto Slab", "Times New Roman", Times, serif;
+}
+
+.header_saved {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  background-color: #ffffff;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 0;
+  font-family: "Roboto Slab", "Times New Roman", Times, serif;
+}
+
+.header__container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 104px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__title-link {
+  text-decoration: none;
+}
+.header__title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  color: #fff;
+  transition: color 0.3s ease-in-out;
+}
+
+.header_saved .header__title {
+  color: #1a1b22;
+}
+
+.header__nav-auth {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media screen and (max-width: 1209px) {
+  .header {
+    max-height: 66px;
+  }
+
+  .header_saved {
+    max-height: 66px;
+  }
+  .header__container {
+    padding: 0 40px;
+  }
+  .header__title {
+    height: 24.8px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 587px) {
+  .header,
+  .header_saved {
+    position: relative;
+    z-index: 1001 !important;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  /* When mobile menu is open, make header background match dropdown */
+  .header.mobile-menu-open {
+    background-color: #1a1b22 !important;
+    border-bottom: none !important;
+  }
+
+  .header_saved.mobile-menu-open {
+    background-color: #1a1b22 !important;
+    border-bottom: none !important;
+  }
+
+  /* Change title color when mobile menu is open */
+  .header.mobile-menu-open .header__title {
+    color: #fff !important;
+  }
+
+  .header_saved.mobile-menu-open .header__title {
+    color: #fff !important;
+  }
+
+  .header__container {
+    position: relative;
+    z-index: 1001;
+    padding: 0 16px;
+  }
+  .header__title {
+    height: 24px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}

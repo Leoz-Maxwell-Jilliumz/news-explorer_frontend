@@ -1,0 +1,250 @@
+.saved-articles {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+.saved-articles__header {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin: 0;
+  padding: 40px 104px 56px 104px;
+}
+
+.saved__title {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin: 0;
+  padding: 40px 104px 56px 104px;
+}
+
+.saved-articles__title {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #1a1b225d;
+  margin: 0 0 28px 0;
+  text-align: left;
+}
+
+.saved-articles__subtitle {
+  max-width: 530px;
+  height: 92px;
+  font-family: "Roboto Slab", "Times New Roman", Times, serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 46px;
+  color: #1a1b22;
+  margin: 0px 0 30px 0;
+  text-align: left;
+  text-wrap: wrap;
+}
+
+.saved-articles__keyword {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #1a1b22;
+  margin: 0;
+  text-align: left;
+}
+
+.saved-articles__keyword-highlight {
+  font-weight: 700;
+}
+
+.saved-articles__results {
+  background-color: #f5f6f7;
+  padding: 62px 102px 62px 106px;
+}
+
+.saved-articles__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; /* Increased gap to accommodate keywords */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style bookmarks differently when inside saved articles - DEFAULT STATE (darker) */
+.saved-articles .bookmark-icon {
+  background-color: #fff; /* Darker default background */
+  width: 40px;
+  height: 40px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative; /* Important for tooltip positioning */
+}
+
+/* HOVER STATE (lighter) */
+.saved-articles .bookmark-icon:hover {
+  background-color: #fff; /* Lighter hover background */
+  transition: 0.2s ease-in-out;
+}
+
+/* DEFAULT STATE - darker image */
+.saved-articles .bookmark__image {
+  width: 24px !important;
+  height: 24px !important;
+  transition: opacity 0.2s ease-in-out;
+  margin: 0;
+  display: block;
+  opacity: 0.7; /* Darker/more transparent by default */
+}
+
+/* HOVER STATE - lighter image */
+.saved-articles .bookmark-icon:hover .bookmark__image {
+  opacity: 1; /* Full opacity on hover (lighter/more visible) */
+}
+
+/* Complete tooltip styling for saved articles page */
+.saved-articles .bookmark-icon:hover::before {
+  content: "Remove from saved";
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 8px);
+  transform: translateY(-50%);
+  background-color: #ffffff;
+  color: #000000;
+  padding: 11px 20px;
+  border-radius: 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+  opacity: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  text-align: center;
+  line-height: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide default tooltip states for saved articles */
+.saved-articles .bookmark-icon::before {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out; /* Changed from 5s to 0.3s */
+}
+
+/* Show tooltip on hover for saved articles */
+.saved-articles .bookmark-icon:hover::before {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out; /* Add transition here too */
+}
+
+/* Add these new styles to your existing CSS */
+
+.saved-article-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.saved-article__keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 0 16px;
+}
+
+.saved-article__keyword-tag {
+  background-color: #f5f6f7;
+  color: #1a1b22;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 16px;
+  border: 1px solid #e6e8eb;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.saved-article__keyword-tag:hover {
+  background-color: #e6e8eb;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1209px) {
+  .saved-articles__header {
+    padding: 24px 16px 32px 40px;
+  }
+
+  .saved-articles__title {
+    font-size: 14px;
+    line-height: 24px;
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
+  .saved-articles__subtitle {
+    width: 336px;
+    height: 68px;
+    font-size: 30px;
+    line-height: 34px;
+    margin: 0;
+    margin-bottom: 16px;
+  }
+
+  .saved-articles__results {
+    padding: 32px 40px;
+  }
+  .saved-articles__list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .saved-articles .bookmark-icon::before,
+  .saved-articles .bookmark-icon:hover::before {
+    display: none !important;
+    opacity: 0 !important;
+  }
+
+  .saved-articles__empty-text {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 32px 40px;
+  }
+}
+@media screen and (max-width: 587px) {
+  .saved-articles__header {
+    padding: 24px 16px 32px 16px;
+  }
+
+  .saved-articles__title {
+    font-size: 14px;
+    line-height: 24px;
+    max-width: 100%;
+    margin-bottom: 8px;
+  }
+  .saved-articles__subtitle {
+    width: 100%;
+    height: auto;
+    font-size: 24px;
+    line-height: 28px;
+    margin: 0;
+    margin-bottom: 16px;
+  }
+
+  .saved-articles__results {
+    padding: 32px 16px;
+  }
+  .saved-articles__list {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+  }
+}

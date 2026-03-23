@@ -1,0 +1,37 @@
+#root {
+  margin: 0;
+  padding: 0;
+
+  width: 100vw;
+}
+
+.page {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.page__content {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 587px) {
+  .page__content {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Fix the incomplete property */
+
+    /* Hide scrollbar for webkit browsers (Chrome, Safari, Edge) */
+    -webkit-scrollbar: none;
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+
+  /* Alternative approach - hide scrollbar but keep functionality */
+  .page__content::-webkit-scrollbar {
+    display: none;
+  }
+}
