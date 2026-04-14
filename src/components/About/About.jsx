@@ -1,5 +1,5 @@
 import "./About.css";
-import Profile from "../../assets/profile.jpg";
+import Profile from "../../assets/Jamin-Bust.jpg";
 function About() {
   return (
     <div className="about">
