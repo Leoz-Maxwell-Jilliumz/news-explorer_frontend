@@ -13,7 +13,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Store complete user data including username
   const [userData, setUserData] = useState(() => {
