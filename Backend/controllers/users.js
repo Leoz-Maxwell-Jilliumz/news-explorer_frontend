@@ -62,6 +62,39 @@ const login = async (req, res, next) => {
 	}
 };
 
+const updateProfile = async (req, res, next) => {
+	const { name, email } = req.body;
+	const updateData = {};
+
+	if (name !== undefined) {
+		updateData.name = name;
+	}
+
+	if (email !== undefined) {
+		updateData.email = email;
+	}
+
+	try {
+		const user = await User.findByIdAndUpdate(
+			req.user._id,
+			updateData,
+			{ new: true, runValidators: true }
+		);
+
+		if (!user) {
+			return res.status(404).send({ message: 'User not found' });
+		}
+
+		return res.status(200).send(user);
+	} catch (err) {
+		if (err.code === 11000) {
+			return res.status(409).send({ message: 'Email already exists' });
+		}
+
+		return next(err);
+	}
+};
+
 const getCurrentUser = async (req, res, next) => {
 	try {
 		const user = await User.findById(req.user._id);
@@ -80,4 +113,5 @@ module.exports = {
 	createUser,
 	login,
 	getCurrentUser,
+	updateProfile,
 };

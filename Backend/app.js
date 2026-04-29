@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -12,6 +13,7 @@ const { MONGO_URI = 'mongodb://127.0.0.1:27017/news-explorer', PORT = 3001 } = p
 
 const app = express();
 app.use(cors());
+app.use(helmet());
 app.use(express.json({ limit: '10kb' }));
 app.use(apiLimiter);
 
